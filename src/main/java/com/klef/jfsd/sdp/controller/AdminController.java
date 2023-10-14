@@ -42,6 +42,11 @@ public class AdminController
 	{
 		return "facultyRegister";
 	}
+	@GetMapping("courseRegister")
+	public String courseRegister()
+	{
+		return "courseRegister";
+	}
 	
 	@PostMapping("insertfaculty")
 	public ModelAndView insertfaculty(HttpServletRequest request)
@@ -74,7 +79,6 @@ public class AdminController
 			f.setUsername(username);
 			f.setPassword(password);
 			
-			
 			msg= adminService.addFaculty(f);
 			mv.setViewName("facultyRegister");
 			mv.addObject("message",msg);
@@ -85,6 +89,5 @@ public class AdminController
 		return mv;
 		
 	}
-	
 
 }

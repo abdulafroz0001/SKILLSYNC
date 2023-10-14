@@ -33,7 +33,7 @@
       <li><a href="adminHome">Admin Dashboard</a></li>
       <li><a href="facultyRegister">Add Faculty</a></li>
       <li><a href="studentRegister">Add Student</a></li>
-      <li><a href="studentRegister">Add Course</a></li>
+      <li><a href="courseRegister">Add Course</a></li>
     </ul>
     <div class="header-icons">
       <a href="/login.html"><img src="/images/admin_imgs/admin_profile.png" width="65px"></a>

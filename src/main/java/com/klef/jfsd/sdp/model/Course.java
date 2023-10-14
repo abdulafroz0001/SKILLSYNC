@@ -5,9 +5,9 @@ public class Course
 	private int id;
 	private String name;
 	private String course_code;
+	private String department;
 	private String description;
 	private int credits;
-	private String department;
 	public int getId() {
 		return id;
 	}
