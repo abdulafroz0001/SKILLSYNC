@@ -1,12 +1,26 @@
 package com.klef.jfsd.sdp.model;
-
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+@Entity
+@Table(name = "course_table")
 public class Course 
 {
+	@Id
+	@GeneratedValue
+	@Column(name="course_id")
 	private int id;
+	@Column(name = "course_fullname",nullable=false)
 	private String name;
+	@Column(name = "course_code",nullable=false)
 	private String course_code;
+	@Column(name = "course_description",nullable = false)
 	private String description;
+	@Column(name="course_credits")
 	private int credits;
+	@Column(name="course_department",nullable = false)
 	private String department;
 	public int getId() {
 		return id;
