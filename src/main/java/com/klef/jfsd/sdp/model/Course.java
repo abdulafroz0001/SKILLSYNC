@@ -38,4 +38,10 @@ public class Course
 		this.credits = credits;
 	}
 	
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", name=" + name + ", course_code=" + course_code + ", description=" + description
+				+ ", credits=" + credits + "]";
+	}
+	
 }
