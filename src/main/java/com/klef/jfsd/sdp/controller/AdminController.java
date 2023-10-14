@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.klef.jfsd.sdp.model.Course;
 import com.klef.jfsd.sdp.model.Faculty;
 import com.klef.jfsd.sdp.service.AdminService;
 
@@ -54,7 +55,8 @@ public class AdminController
 		String msg=null;
 		ModelAndView mv = new ModelAndView();
 		
-		try {
+		try 
+		{
 			String fullname = request.getParameter("fullname");
 			String gender= request.getParameter("gender");
 			String dob = request.getParameter("dob");
@@ -83,11 +85,39 @@ public class AdminController
 			mv.setViewName("facultyRegister");
 			mv.addObject("message",msg);
 			
-		} catch (Exception e) {
+		} catch (Exception e) 
+		{
 			msg = e.getMessage();
 		}
 		return mv;
-		
 	}
 
+
+	@GetMapping("addcourse")
+	public ModelAndView addcourse(HttpServletRequest request)
+	{
+		String msg=null;
+		ModelAndView mv = new ModelAndView();
+		try
+		{
+			String name=request.getParameter("name");
+			String course_code=request.getParameter("course_code");
+			String description=request.getParameter("description");
+			String cred=request.getParameter("credits");
+			int credits=Integer.parseInt(cred);
+			String department=request.getParameter("department");
+			
+			Course c=new Course();
+			c.setName(name);
+			c.setCourse_code(course_code);
+			c.setDescription(description);
+			c.setCredits(credits);
+			c.setDepartment(department);
+		}
+		catch(Exception e)
+		{
+			msg=e.getMessage();
+		}
+		return mv;
+	}
 }
