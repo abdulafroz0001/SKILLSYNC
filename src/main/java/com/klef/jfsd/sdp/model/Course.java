@@ -7,6 +7,7 @@ public class Course
 	private String course_code;
 	private String description;
 	private int credits;
+	private String department;
 	public int getId() {
 		return id;
 	}
@@ -36,6 +37,17 @@ public class Course
 	}
 	public void setCredits(int credits) {
 		this.credits = credits;
+	}
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", name=" + name + ", course_code=" + course_code + ", description=" + description
+				+ ", credits=" + credits + ", department=" + department + "]";
 	}
 	
 	@Override
