@@ -20,7 +20,7 @@ public class Course
 	@Column(name = "course_description",nullable = false)
 
 	private String description;
-	@Column(name="course_credits")
+	@Column(name="course_credits",nullable=false)
 	private int credits;
 
 	@Column(name="course_department",nullable = false)
