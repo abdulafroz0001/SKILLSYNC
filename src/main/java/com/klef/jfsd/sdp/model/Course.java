@@ -2,6 +2,7 @@ package com.klef.jfsd.sdp.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 @Entity
@@ -9,7 +10,7 @@ import jakarta.persistence.Table;
 public class Course 
 {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="course_id")
 	private int id;
 	@Column(name = "course_fullname",nullable=false)
@@ -20,7 +21,7 @@ public class Course
 	@Column(name = "course_description",nullable = false)
 
 	private String description;
-	@Column(name="course_credits")
+	@Column(name="course_credits",nullable = false)
 	private int credits;
 
 	@Column(name="course_department",nullable = false)

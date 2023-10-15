@@ -1,5 +1,7 @@
 package com.klef.jfsd.sdp.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +22,9 @@ public class AdminController
 	@Autowired
 	AdminService adminService;
 	
+	
+	
+	
 	@GetMapping("adminLogin")
 	public String adminLogin()
 	{
@@ -27,9 +32,15 @@ public class AdminController
 	}
 	
 	@GetMapping("adminHome")
-	public String adminHome()
+	public ModelAndView adminHome()
 	{
-		return "adminHome";
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("adminHome");
+		List<Course> courseList = adminService.viewAllCourses();
+		System.out.println(courseList);
+		mv.addObject("course_list", courseList);
+		mv.addObject("total_courses", courseList.size());
+		return mv;
 	}
 	
 	@GetMapping("adminCoursePage")
@@ -68,6 +79,11 @@ public class AdminController
 			String contactno = request.getParameter("contactno");
 			String username = request.getParameter("username");
 			String password= request.getParameter("password");
+			String secQuestion= request.getParameter("secQuestion");
+			String secAnswer= request.getParameter("secAnswer");
+			System.out.println(secQuestion+"   ghjkm,");
+			System.out.println(secAnswer+"   ghjkm,");
+			
 			
 			Faculty f= new Faculty();
 			f.setFullname(fullname);
@@ -80,7 +96,8 @@ public class AdminController
 			f.setSalary(salary);
 			f.setUsername(username);
 			f.setPassword(password);
-			
+			f.setSecurityQuestion(secQuestion);
+			f.setSecAnswer(secAnswer);
 			msg= adminService.addFaculty(f);
 			mv.setViewName("facultyRegister");
 			mv.addObject("message",msg);
@@ -93,7 +110,7 @@ public class AdminController
 	}
 
 
-	@GetMapping("addcourse")
+	@PostMapping("addcourse")
 	public ModelAndView addcourse(HttpServletRequest request)
 	{
 		String msg=null;
@@ -113,10 +130,15 @@ public class AdminController
 			c.setDescription(description);
 			c.setCredits(credits);
 			c.setDepartment(department);
+			msg=adminService.addCourse(c);
+			mv.setViewName("adminHome");
+			mv.addObject("message", msg);
 		}
 		catch(Exception e)
 		{
 			msg=e.getMessage();
+			mv.setViewName("courseRegister");
+			mv.addObject("message", msg);
 		}
 		return mv;
 	}

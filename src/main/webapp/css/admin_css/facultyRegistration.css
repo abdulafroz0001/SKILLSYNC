@@ -49,9 +49,9 @@
   .form 
   {
     position: relative;
-    margin-top: 10%;
-    width:600px;
-    padding: 60px 20px 40px;
+    margin-top: 12%;
+    width: 600px;
+    padding: 50px 10px 10px;
     background: rgba(0,0,0,0.7);
     border-radius: 10px;
     color: #fff;
@@ -84,18 +84,20 @@
   {
     text-align: center;
     letter-spacing: 1px;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color: #2cbea1;
   }
   .form .input-group
   {
     position: relative;
   }
+
   .loin-inputs
   {
-	  display: flex;
-  	  flex-wrap: wrap;
-  	  justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-evenly;
+    padding: 2px 5%;
 	  
   }
   .form .input-group input 
@@ -110,6 +112,11 @@
     outline: none;
     background-color: transparent;
     color: inherit;
+  }
+  .form .input-group span
+  {
+	  color:darkred;
+	  margin-top: -10px;
   }
   .form .input-group label 
   {
@@ -179,6 +186,12 @@
     text-decoration: none;
     color: inherit;
   }  
+  
+  .validation-message
+  {
+	  margin-top: -5%;
+  }
+  
 
 
   

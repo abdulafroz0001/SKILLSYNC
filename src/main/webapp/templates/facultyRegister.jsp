@@ -21,6 +21,14 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
   <title>Faculty Registration </title>
 </head>
+<style>
+
+
+
+
+
+
+</style>
 
 <body>
   <!-- header -->
@@ -61,6 +69,7 @@
 	        <div class="input-group">
 	          <input type="text" name="fullname" id="fullname" required="required">
 	          <label for="fullname">Full Name</label>
+	          <div class="validation-message"></div>
 	        </div>
 	        <div class="input-group">
 	        <div class="gender-input">
@@ -73,36 +82,55 @@
 
 	        
 	        <div class="input-group">
-	          <input style="width:200px;" type="date" name="dob" id="loginPassword" required="required">
-	          <label for="loginPassword">Date Of Birth</label>
+	            <input class="no-placeholder" style="width:200px;" type="date" name="dob" id="dob" required="required">
+  				<label hidden="true" id="dob-label" for="dob">Date Of Birth</label>
 	        </div>
 	        <div class="input-group">
-	          <input type="text" name="dept" id="loginPassword" required="required"> 
-	          <label for="loginPassword">Department</label>
+	          <input type="text" name="dept" id="dept" required="required"> 
+	          <label for="dept">Department</label>
+	          <div class="validation-message"></div>
 	        </div>
 	        <div class="input-group">
-	          <input type="text" name="course" id="loginPassword" required="required">
-	          <label for="loginPassword">Course</label>
+	          <input type="text" name="course" id="course" required="required">
+	          <label for="course">Course</label>
+	          <span class="validation-message"></span>
 	        </div>
 	        <div class="input-group">
-	          <input type="number" step="0.01" name="salary" id="loginPassword" required="required" >
-	          <label for="loginPassword">Salary</label>
+	          <input type="number" step="0.01" name="salary" id="salary" required="required" >
+	          <label for="salary">Salary</label>
 	        </div>
 	        <div class="input-group">
-	          <input type="email" name="email" id="loginPassword" required="required">
-	          <label for="loginPassword">Email</label>
+	          <input type="email" name="email" id="email" required="required">
+	          <label for="email">Email</label>
+	          <span class="validation-message"></span>
 	        </div>
 	        <div class="input-group">
-	          <input type="text" pattern="[789][0-9]{9}"  name="contactno" id="loginPassword" required="required">
-	          <label for="loginPassword">Contact No</label>
+	          <input type="text"  name="contactno" id="contactno" required="required">
+	          <label for="contactno">Contact No</label>
+	          <span class="validation-message"></span>
 	        </div>
 	        <div class="input-group">
-	          <input type="text" name="username" id="loginPassword" required="required">
-	          <label for="loginPassword">Username</label>
+	          <input type="text" name="username" id="username" required="required">
+	          <label for="username">Username</label>
+	          <span class="validation-message"></span>
 	        </div>
 	        <div class="input-group">
-	          <input type="password" name="password" id="loginPassword" required="required">
-	          <label for="loginPassword">Password</label>
+	          <input type="password" name="password" id="password" required="required">
+	          <label for="password">Password</label>
+	          <span class="validation-message"></span>
+	        </div>
+	        
+	        <div class="input-group">
+	            <select style="width:80%; padding:2%;outline: none;background-color: transparent; color:white;"  id="securityQuestion1" name="secQuestion" required>
+	                <option style=" color:black;width:80%; padding:2%;outline: none;background-color: transparent;color: black;" value="">Select a security question</option>
+	                <option style="width:80%; padding:2%;outline: none;background-color: transparent;color: inherit;color: black;" value="What is your favorite color?">What is your favorite color?</option>
+	                <option style="width:80%; padding:2%;outline: none;background-color: transparent;color: inherit;color: black;" value="What is your mother's maiden name?">What is your mother's maiden name?</option>
+	                <option style="width:80%; padding:2%;outline: none;background-color: transparent;color: inherit;color: black;" value="In what city were you born?">In what city were you born?</option>
+	            </select>
+	        </div>
+	        <div class="input-group">
+	          <input type="password" name="secAnswer" id="secAnswer" required="required">
+	          <label for="secAnswer">Answer</label>
 	        </div>
         </div>
         <!-- input field -->
@@ -126,6 +154,8 @@
     </div>
   </div>
   <!-- customejs link -->
+  <script type="text/javascript" src="/js/admin_js/facultyRegistrationValidation.js"></script>
+  <script type="text/javascript" src="/js/admin_js/lable.js"></script>
   <script type="text/javascript" src="/js/home.js"></script>
 </body>
 

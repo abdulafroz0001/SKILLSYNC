@@ -48,6 +48,8 @@ const jobs = [
     link: "adminCoursePage",
   },
 ];
+
+
 const jobsHeading = document.querySelector(".jobs-list-container h2");
 const jobsContainer = document.querySelector(".jobs-list-container .jobs");
 const jobSearch = document.querySelector(".jobs-list-container .job-search");

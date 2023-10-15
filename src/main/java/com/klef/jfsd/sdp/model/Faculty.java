@@ -3,6 +3,7 @@ package com.klef.jfsd.sdp.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -11,7 +12,7 @@ import jakarta.persistence.Table;
 public class Faculty 
 {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="fac_id")
 	private int id;
 	@Column(name = "fac_fullname", nullable = false)
@@ -34,6 +35,11 @@ public class Faculty
 	private String username;
 	@Column(name="fac_password", nullable = false)
 	private String password;
+	@Column(name="fac_secQuestion", nullable = false)
+	private String securityQuestion;
+	@Column(name="fac_secAnswer", nullable = false)
+	private String secAnswer;
+	
 	public int getId() {
 		return id;
 	}
@@ -99,5 +105,17 @@ public class Faculty
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getSecurityQuestion() {
+		return securityQuestion;
+	}
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+	public String getSecAnswer() {
+		return secAnswer;
+	}
+	public void setSecAnswer(String secAnswer) {
+		this.secAnswer = secAnswer;
 	}
 }
