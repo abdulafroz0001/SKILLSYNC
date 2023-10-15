@@ -64,62 +64,16 @@
     	
       <form class="form" action="insertfaculty" method="post" >
         <img src="/images/login_avatar.jpg" alt="">
-        <h2>Faculty Registration</h2>
+        <h2>Forgot Password</h2>
         <div class="loin-inputs">
-	        <div class="input-group">
-	          <input type="text" name="fullname" id="fullname" required="required">
-	          <label for="fullname">Full Name</label>
-	          <div class="validation-message"></div>
-	        </div>
-	        <div class="input-group">
-	        <div class="gender-input">
-	        	
-	            <input type="radio" name="gender" id="male" value="MALE" required/>Male
-				<input type="radio" name="gender" id="female" value="FEMALE" required/>Female
-	          </div>
-	          
-	        </div>
-
 	        
-	        <div class="input-group">
-	            <input class="no-placeholder" style="width:200px;" type="date" name="dob" id="dob" required="required">
-  				<label hidden="true" id="dob-label" for="dob">Date Of Birth</label>
-	        </div>
-	        <div class="input-group">
-	          <input type="text" name="dept" id="dept" required="required"> 
-	          <label for="dept">Department</label>
-	          <div class="validation-message"></div>
-	        </div>
-	        <div class="input-group">
-	          <input type="text" name="course" id="course" required="required">
-	          <label for="course">Course</label>
-	          <span class="validation-message"></span>
-	        </div>
-	        <div class="input-group">
-	          <input type="number" step="0.01" name="salary" id="salary" required="required" >
-	          <label for="salary">Salary</label>
-	        </div>
-	        <div class="input-group">
-	          <input type="email" name="email" id="email" required="required">
-	          <label for="email">Email</label>
-	          <span class="validation-message"></span>
-	        </div>
-	        <div class="input-group">
-	          <input type="text"  name="contactno" id="contactno" required="required">
-	          <label for="contactno">Contact No</label>
-	          <span class="validation-message"></span>
-	        </div>
+	        
+	       
 	        <div class="input-group">
 	          <input type="text" name="username" id="username" required="required">
 	          <label for="username">Username</label>
 	          <span class="validation-message"></span>
 	        </div>
-	        <div class="input-group">
-	          <input type="password" name="password" id="password" required="required">
-	          <label for="password">Password</label>
-	          <span class="validation-message"></span>
-	        </div>
-	        
 	        <div class="input-group">
 	            <select style="width:80%; padding:2%;outline: none;background-color: transparent; color:white;"  id="securityQuestion1" name="secQuestion" required>
 	                <option style=" color:black;width:80%; padding:2%;outline: none;background-color: transparent;color: black;" value="">Select a security question</option>
@@ -136,7 +90,7 @@
         <!-- input field -->
         
 	        <button type="submit" value="Login" class="submit-btn">Submit</button>
-	        <!-- <a href="facultyForgotPassword" class="forgot-pw">Forgot Password?</a> -->
+	        <!--  <a href="#forgot-pw" class="forgot-pw">Forgot Password?</a>-->
         
       </form>
 
