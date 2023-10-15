@@ -66,7 +66,7 @@
     </div> -->
     <div class="login-wrapper">
     	
-      <form class="form" action="insertfaculty" method="post" >
+      <form class="form" action="addcourse" method="post" >
         <img src="/images/admin_imgs/courses.png" alt="">
         <h2>Course Registration</h2>
         <div class="loin-inputs">
@@ -75,7 +75,7 @@
 	          <label for="fullname">Name</label>
 	        </div>
 	        <div class="input-group">
-	          <input type="number" name="course_code" id="loginPassword" required="required"> 
+	          <input type="text" name="course_code" id="loginPassword" required="required"> 
 	          <label for="loginPassword">Course Code</label>
 	        </div>
 	        <div class="input-group">

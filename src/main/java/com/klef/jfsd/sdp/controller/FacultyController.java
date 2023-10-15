@@ -74,5 +74,16 @@ public class FacultyController
 		}
 		return mv;
 	}
+	
+	@GetMapping("facultyForgotPassword")
+	public String facultyForgotPassword()
+	{
+		return "facultyForgotPassword";
+	}
+	@PostMapping("updatePassword")
+	public String updatePassword()
+	{
+		return null;
+	}
 
 }
