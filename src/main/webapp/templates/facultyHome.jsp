@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+    <%@ taglib uri="jakarta.tags.core" prefix="c"%> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,12 +27,13 @@
   <!-- header -->
 
   <div class="header">
-    <a href="/index.html" class="logo">
+    <a href="/" class="logo">
       <img src="/images/logo3.png" width="240px">
     </a>
 
     <ul class="navbar">
-      <li><a href="/index.html">Faculty Dashboard</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="facultyHome">Faculty Dashboard</a></li>
       <!-- <li><a href="/admin/coursePage.htmlabout">About Us</a></li>
       <li><a href="/admin/coursePage.htmlcontact">Contact</a></li> -->
     </ul>
@@ -50,76 +52,42 @@
 	</span>
 
 
-  <div class="jobs-list-container">
-    <h2>6 Courses </h2>
+   <div class="jobs-list-container">
+    <div class="course-heading">
+      <img src="images/courses.png" alt="" width="70px" />
+
+      <h2>${total_courses} Courses </h2>      
+    </div>
+
 
     <div class="jobs">
-      <div class="job">
-        <img src="images/software-engineer.jpg" alt="" />
-        <h3 class="job-title">Naa peru Bharat</h3>
-        <div class="details">
-          Responsible for knowing everyone about all services.
-        </div>
-        <a href="facultyCoursePage.html" class="details-btn">Edit</a>
-        <span class="open-position">21CS6969</span>
-      </div>
-
-      <div class="job">
-        <img src="images/software-engineer.jpg" alt="" />
-        <h3 class="job-title">Naa peru Bharat</h3>
-        <div class="details">
-          Responsible for knowing everyone about all services.
-        </div>
-        <a href="facultyCoursePage.html" class="details-btn">More details</a>
-        <span class="open-position">4 open positions</span>
-      </div>
-
-      <div class="job">
-        <img src="images/software-engineer.jpg" alt="" />
-        <h3 class="job-title">Naa peru Bharat</h3>
-        <div class="details">
-          Responsible for knowing everyone about all services.
-        </div>
-        <a href="facultyCoursePage.html" class="details-btn">More details</a>
-        <span class="open-position">4 open positions</span>
-      </div>
-
-      <div class="job">
-        <img src="images/software-engineer.jpg" alt="" />
-        <h3 class="job-title">Naa peru Bharat</h3>
-        <div class="details">
-          Responsible for knowing everyone about all services.
-        </div>
-        <a href="facultyCoursePage.html" class="details-btn">More details</a>
-        <span class="open-position">4 open positions</span>
-      </div>
-
-      <div class="job">
-        <img src="images/software-engineer.jpg" alt="" />
-        <h3 class="job-title">Naa peru Bharat</h3>
-        <div class="details">
-          Responsible for knowing everyone about all services.
-        </div>
-        <a href="facultyCoursePage.html" class="details-btn">More details</a>
-        <span class="open-position">4 open positions</span>
-      </div>
-
-      <div class="job">
-        <img src="images/software-engineer.jpg" alt="" />
-        <h3 class="job-title">Naa peru Bharat</h3>
-        <div class="details">
-          Responsible for knowing everyone about all services.
-        </div>
-        <a href="facultyCoursePage.html" class="details-btn">More details</a>
-        <span class="open-position">4 open positions</span>
-      </div>
+    <c:forEach items="${course_list}"  var="course"> 
+	      <div class="job">
+		        <div class="job-header">
+			        <img src="/images/admin_imgs/software-engineer.jpg" alt="" />
+			        <h3 class="job-title">${course.title }</h3>
+	       		 </div>
+		        <div class="details">
+		          ${course.description }
+		        </div>
+		        <div class="job-body">
+			        <span class="open-position">Code : ${course.course_code}</span>
+			        <span class="open-position">Credits : ${course.credits}</span>
+			        <span class="open-position">Dept : ${course.department}</span>
+		        </div>
+		        <div class="job-end">
+		        	<a href="/admin/coursePage.html" class="job-button">More details</a>
+		        </div>
+		        
+	      </div>
+      </c:forEach> 
     </div>
   </div>
 
 
 
   <!-- customejs link -->
-  <script type="text/javascript" src="/js/faculty_js/facultyHome.js"></script>
+
   <script type="text/javascript" src="/js/home.js"></script>
 </body>
 

@@ -13,8 +13,8 @@ public class Course
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="course_id")
 	private int id;
-	@Column(name = "course_fullname",nullable=false)
-	private String name;
+	@Column(name = "course_title",nullable=false)
+	private String title;
 	@Column(name = "course_code",nullable=false)
 	private String course_code;
 
@@ -33,12 +33,13 @@ public class Course
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
+	
 	public String getCourse_code() {
 		return course_code;
 	}
@@ -67,7 +68,7 @@ public class Course
 	
 	@Override
 	public String toString() {
-		return "Course [id=" + id + ", name=" + name + ", course_code=" + course_code + ", description=" + description
+		return "Course [id=" + id + ", name=" + title + ", course_code=" + course_code + ", description=" + description
 				+ ", credits=" + credits + "]";
 	}
 	

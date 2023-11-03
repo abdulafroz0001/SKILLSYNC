@@ -1,5 +1,4 @@
 package com.klef.jfsd.sdp.controller;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,9 +8,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.klef.jfsd.sdp.model.CFS_Student;
 import com.klef.jfsd.sdp.model.Course;
+import com.klef.jfsd.sdp.model.CourseFacultySection;
 import com.klef.jfsd.sdp.model.Faculty;
+import com.klef.jfsd.sdp.model.Section;
+import com.klef.jfsd.sdp.model.Student;
 import com.klef.jfsd.sdp.service.AdminService;
+import com.klef.jfsd.sdp.service.CFSService;
+import com.klef.jfsd.sdp.service.CFS_StudentService;
+import com.klef.jfsd.sdp.service.CourseService;
+import com.klef.jfsd.sdp.service.FacultyService;
+import com.klef.jfsd.sdp.service.SectionService;
+import com.klef.jfsd.sdp.service.StudentService;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -21,6 +32,24 @@ public class AdminController
 {
 	@Autowired
 	AdminService adminService;
+	
+	@Autowired
+	CourseService courseService;
+	
+	@Autowired 
+	SectionService sectionService;
+	
+	@Autowired 
+	StudentService studentService;
+	
+	@Autowired
+	CFSService cfsService;
+	
+	@Autowired
+	CFS_StudentService cfs_StudentService;
+	
+	@Autowired
+	FacultyService facultyService;
 	
 	
 	
@@ -58,6 +87,47 @@ public class AdminController
 	public String courseRegister()
 	{
 		return "courseRegister";
+	}
+	@GetMapping("studentRegister")
+	public String studentRegister()
+	{
+		return "studentRegister";
+	}
+	@GetMapping("cfsRegister")
+	public ModelAndView cfsRegister()
+	{
+		
+		
+		ModelAndView mv = new ModelAndView("cfsRegister");
+		List<Course> clist= courseService.viewAllCourse();
+		List<Section> slist= sectionService.viewAllSection();
+		List<Faculty> flist= facultyService.viewAllFaculty();
+		
+		mv.addObject("coursedata", clist);
+		mv.addObject("facultydata", flist);
+		mv.addObject("sectiondata", slist);
+		return mv;
+
+	}
+	
+	@GetMapping("cfsStudentRegister")
+	public ModelAndView addCfsStudent() throws JsonProcessingException
+	{
+		ModelAndView mv = new ModelAndView("cfsStudentRegister");
+		List<Course> clist= courseService.viewAllCourse();
+		List<Section> slist= sectionService.viewAllSection();
+		List<Student> stlist= studentService.viewAllStudent();
+		List<CourseFacultySection> cfslist = cfsService.viewAllCourseFacultySection();
+		mv.addObject("coursedata", clist);
+		mv.addObject("studentdata", stlist);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		String slistJson = objectMapper.writeValueAsString(slist);
+		String cfslistJson = objectMapper.writeValueAsString(cfslist);
+	
+		mv.addObject("sectiondata", slistJson);
+		mv.addObject("cfsdata", cfslistJson);
+		return mv;
 	}
 	
 	@PostMapping("insertfaculty")
@@ -108,6 +178,55 @@ public class AdminController
 		}
 		return mv;
 	}
+	
+	@PostMapping("insertstudent")
+	public ModelAndView insertstudent(HttpServletRequest request)
+	{
+		String msg=null;
+		ModelAndView mv = new ModelAndView();
+		
+		try 
+		{
+			String fullname = request.getParameter("fullname");
+			String gender= request.getParameter("gender");
+			String dob = request.getParameter("dob");
+			String dept= request.getParameter("dept");
+			String curyear= request.getParameter("cur_year");
+			String gpa = request.getParameter("cgpa");
+			double cgpa = Double.parseDouble(gpa);
+			String email= request.getParameter("email");
+			String contactno = request.getParameter("contactno");
+			String username = request.getParameter("username");
+			String password= request.getParameter("password");
+			String secQuestion= request.getParameter("secQuestion");
+			String secAnswer= request.getParameter("secAnswer");
+			System.out.println(secQuestion+"   ghjkm,");
+			System.out.println(secAnswer+"   ghjkm,");
+			
+			
+			Student s= new Student();
+			s.setFullname(fullname);
+			s.setGender(gender);
+			s.setDateofbirth(dob);
+			s.setDepartment(dept);
+			s.setCurrent_year(curyear);
+			s.setEmail(email);
+			s.setContactno(contactno);
+			s.setCgpa(cgpa);
+			s.setUsername(username);
+			s.setPassword(password);
+			s.setSecurityQuestion(secQuestion);
+			s.setSecAnswer(secAnswer);
+			msg= adminService.addStudent(s);
+			mv.setViewName("studentRegister");
+			mv.addObject("message",msg);
+			
+		} catch (Exception e) 
+		{
+			msg = e.getMessage();
+		}
+		return mv;
+	}
 
 
 	@PostMapping("addcourse")
@@ -125,7 +244,7 @@ public class AdminController
 			String department=request.getParameter("department");
 			
 			Course c=new Course();
-			c.setName(name);
+			c.setTitle(name);
 			c.setCourse_code(course_code);
 			c.setDescription(description);
 			c.setCredits(credits);
@@ -142,4 +261,87 @@ public class AdminController
 		}
 		return mv;
 	}
+	
+	@PostMapping("/insertCfs")
+	public ModelAndView insertCfs(HttpServletRequest request)
+	{
+		int cid = Integer.parseInt(request.getParameter("course"));
+		int fid = Integer.parseInt(request.getParameter("faculty"));
+		int sid = Integer.parseInt(request.getParameter("section"));
+		String st = request.getParameter("is_cc");
+		System.out.println(st);
+		Course c = courseService.viewCourseById(cid);
+		Faculty f = facultyService.viewFacultyById(fid);
+		Section s = sectionService.viewSectionById(sid);
+		String msg="";
+		long check = cfsService.checkCfsMapping(c, f, s);
+		if(check>0)
+		{
+			msg="CFS Failed";
+			
+		}
+		else
+		{
+			CourseFacultySection cfs = new CourseFacultySection();
+			cfs.setCourse(c);
+			cfs.setFaculty(f);
+			cfs.setSection(s);
+			 msg= cfsService.addCourseFacultySection(cfs);
+		}
+		ModelAndView mv = new ModelAndView("cfsRegister");
+		List<Course> clist= courseService.viewAllCourse();
+		List<Section> slist= sectionService.viewAllSection();
+		List<Faculty> flist= facultyService.viewAllFaculty();
+		
+		mv.addObject("coursedata", clist);
+		mv.addObject("facultydata", flist);
+		mv.addObject("sectiondata", slist);
+		mv.addObject("message", msg);
+		return mv;
+	}
+	
+	@PostMapping("/insertCfsStudent")
+	public ModelAndView insertCfsStudent(HttpServletRequest request) throws JsonProcessingException
+	{
+		ModelAndView mv = new ModelAndView("cfsStudentRegister");
+		int stid = Integer.parseInt(request.getParameter("student"));
+		int cid = Integer.parseInt(request.getParameter("course"));
+		int sid = Integer.parseInt(request.getParameter("section"));
+		
+		CourseFacultySection cfs = cfsService.viewCFSByCourseSectionId(cid, sid);
+		Student s = studentService.viewStudentById(stid);
+		String msg = "";
+		long check = cfs_StudentService.checkCfs_StudentMapping(cfs, s);
+		if(check>0)
+		{
+			msg="Course Student Mapping Already Exists!";
+		}
+		else
+		{
+			
+			CFS_Student cfs_Student = new CFS_Student();
+			cfs_Student.setCfs(cfs);
+			cfs_Student.setStudent(s);
+			msg=cfs_StudentService.addCFSStudent(cfs_Student);
+		}
+		
+		List<Course> clist= courseService.viewAllCourse();
+		List<Section> slist= sectionService.viewAllSection();
+		List<Student> stlist= studentService.viewAllStudent();
+		List<CourseFacultySection> cfslist = cfsService.viewAllCourseFacultySection();
+		mv.addObject("coursedata", clist);
+		mv.addObject("studentdata", stlist);
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+		String slistJson = objectMapper.writeValueAsString(slist);
+		String cfslistJson = objectMapper.writeValueAsString(cfslist);
+	
+		mv.addObject("sectiondata", slistJson);
+		mv.addObject("cfsdata", cfslistJson);
+		mv.addObject("message", msg);
+		return mv;
+		
+
+	}
+	
 }

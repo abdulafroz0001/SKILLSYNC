@@ -2,6 +2,7 @@
   // Get the form element
   const form = document.querySelector(".form");
 
+
   function validateNameField(input) {
     const regex = /^[A-Za-z\s]+$/; // Only allows letters and spaces
     return regex.test(input.value);

@@ -30,7 +30,7 @@
     </a>
 
     <ul class="navbar">
-        <li><a href="/index.html">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
@@ -66,7 +66,7 @@
         </div>
         <!-- input field -->
         <button type="submit" value="Login" class="submit-btn">Login</button>
-        <a href="#forgot-pw" class="forgot-pw">Forgot Password?</a>
+        <a href="facultyForgotPassword" class="forgot-pw">Forgot Password?</a>
       </form>
 
       <!-- <div id="forgot-pw">
