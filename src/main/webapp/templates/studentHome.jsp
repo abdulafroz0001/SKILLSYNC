@@ -34,8 +34,8 @@
     <ul class="navbar">
     	<li><a href="/">Home</a></li>
       <li><a href="/index.html">Student Dashboard</a></li>
-      <!-- <li><a href="/admin/coursePage.htmlabout">About Us</a></li>
-      <li><a href="/admin/coursePage.htmlcontact">Contact</a></li> -->
+      <li><a href="studentProfile">Student Profile</a></li>
+      <!-- <li><a href="/admin/coursePage.htmlcontact">Contact</a></li> -->
     </ul>
     <div class="header-icons">
       <a href="/login.html"><img src="/images/student_imgs/student_profile.png" width="65px"></a>
