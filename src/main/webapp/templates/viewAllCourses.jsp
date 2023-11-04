@@ -15,11 +15,11 @@
 
   <!-- flatiocns -->
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-  <link rel="stylesheet" href="/css/admin_css/adminHome.css">
+  <link rel="stylesheet" href="/css/admin_css/viewAllCourses.css">
   <link rel="stylesheet" href="/css/admin_css/dropdown.css">
   <link rel="stylesheet" href="/css/home.css">
   <link rel="stylesheet" type="text/css" href="/css/admin_css/adminListingPage.css" />
-  <title>Admin Home</title>
+  <title>View All Courses</title>
 </head>
 
 <body>
@@ -66,7 +66,8 @@
     <div class="course-heading">
       <img src="images/courses.png" alt="" width="70px" />
 
-      <h2>${total_courses} Courses </h2>      
+      <h2>${total_courses} Courses </h2> 
+      <span><input style="padding:2%;margin-left:-10%; border-radius:5px;border-style: solid; border-color: green;" type="text" id="searchInput" placeholder="Search by name">     
     </div>
 
 
@@ -99,6 +100,29 @@
   <!-- customejs link -->
 	<!-- <script type="text/javascript" src="/js/admin_js/adminMain.js"></script>  -->
   <script type="text/javascript" src="/js/home.js"></script>
+  <script>
+  
+	  document.addEventListener('DOMContentLoaded', function() {
+	      const searchInput = document.getElementById('searchInput');
+	      const courseItems = document.querySelectorAll('.job');
+	      
+	      console.log(courseItems);
+	
+	      searchInput.addEventListener('input', function() {
+	          const searchText = searchInput.value.toLowerCase();
+	
+	          courseItems.forEach(function(course) {
+	              const courseName = course.querySelector('.job-title').textContent.toLowerCase();
+	
+	              if (courseName.includes(searchText)) {
+	                  course.style.display = 'block'; // Show matching students
+	              } else {
+	                  course.style.display = 'none'; // Hide non-matching students
+	              }
+	          });
+	      });
+  		});
+  </script>
 </body>
 
 </html>

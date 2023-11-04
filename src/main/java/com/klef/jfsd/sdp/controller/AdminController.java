@@ -60,6 +60,68 @@ public class AdminController
 		return "adminLogin";
 	}
 	
+	@GetMapping("adminDashboard")
+	public ModelAndView adminDashboard()
+	{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("adminDashboard");
+		List<Course> courseList = adminService.viewAllCourses();
+		List<Faculty> facultyList = adminService.viewAllFaculty();
+		List<Student> studentList = adminService.viewAllStudents();
+		System.out.println(courseList);
+
+		mv.addObject("total_courses", courseList.size());
+		mv.addObject("total_faculty", facultyList.size());
+		mv.addObject("total_students", studentList.size());
+		return mv;
+		
+	}
+	@GetMapping("viewAllCourses")
+	public ModelAndView viewAllCourses()
+	{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("viewAllCourses");
+		List<Course> courseList = adminService.viewAllCourses();
+
+//		System.out.println(courseList);
+		
+		mv.addObject("total_courses", courseList.size());
+		mv.addObject("course_list", courseList);
+
+		return mv;
+		
+	}
+	@GetMapping("viewAllFaculty")
+	public ModelAndView viewAllFaculty()
+	{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("viewAllFaculty");
+		List<Faculty> facultyList = adminService.viewAllFaculty();
+		
+//		System.out.println(facultyList);
+		
+		mv.addObject("total_faculty", facultyList.size());
+		mv.addObject("faculty_list", facultyList);
+		
+		return mv;
+		
+	}
+	@GetMapping("viewAllStudents")
+	public ModelAndView viewAllStudent()
+	{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("viewAllStudents");
+		List<Student> studentList = adminService.viewAllStudents();
+		
+//		System.out.println(studentList);
+		
+		mv.addObject("total_students", studentList.size());
+		mv.addObject("student_list", studentList);
+		
+		return mv;
+		
+	}
+	
 	@GetMapping("adminHome")
 	public ModelAndView adminHome()
 	{

@@ -40,7 +40,7 @@
 
     <ul class="navbar">
         <li><a href="/">Home</a></li>
-      <li><a href="adminHome">Admin Dashboard</a></li>
+      <li><a href="adminDashboard">Admin Dashboard</a></li>
       <li><a href="facultyRegister">Add Faculty</a></li>
       <li><a href="studentRegister">Add Student</a></li>
       <li><a href="courseRegister">Add Course</a></li>

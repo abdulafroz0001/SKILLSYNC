@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="/css/admin_css/dropdown.css">
   <link rel="stylesheet" href="/css/home.css">
   <link rel="stylesheet" type="text/css" href="/css/admin_css/adminListingPage.css" />
-  <title>Admin Home</title>
+  <title>Admin Dashboard</title>
 </head>
 
 <body>
@@ -66,31 +66,64 @@
     <div class="course-heading">
       <img src="images/courses.png" alt="" width="70px" />
 
-      <h2>${total_courses} Courses </h2>      
+      <h2> Admin Dashboard </h2>      
     </div>
 
 
     <div class="jobs">
-    <c:forEach items="${course_list}"  var="course"> 
+     
 	      <div class="job">
 		        <div class="job-header">
 			        <img src="/images/admin_imgs/software-engineer.jpg" alt="" />
-			        <h3 class="job-title">${course.title }</h3>
+			        <h3 class="job-title">Faculty</h3>
 	       		 </div>
 		        <div class="details">
-		          ${course.description }
+		          View All Faculty Details.
 		        </div>
 		        <div class="job-body">
-			        <span class="open-position">Code : ${course.course_code}</span>
-			        <span class="open-position">Credits : ${course.credits}</span>
-			        <span class="open-position">Dept : ${course.department}</span>
+			        <span class="open-position">Total : ${total_faculty } </span>
+			        
 		        </div>
 		        <div class="job-end">
-		        	<a href="/admin/coursePage.html" class="job-button">More details</a>
+		        	<a href="viewAllFaculty" class="job-button">More details</a>
 		        </div>
 		        
 	      </div>
-      </c:forEach> 
+	      <div class="job">
+		        <div class="job-header">
+			        <img src="/images/admin_imgs/software-engineer.jpg" alt="" />
+			        <h3 class="job-title">Course</h3>
+	       		 </div>
+		        <div class="details">
+		          View All Course Details.
+		        </div>
+		        <div class="job-body">
+			        <span class="open-position">Total : ${total_courses } </span>
+			        
+		        </div>
+		        <div class="job-end">
+		        	<a href="viewAllCourses" class="job-button">More details</a>
+		        </div>
+		        
+	      </div>
+	      <div class="job">
+		        <div class="job-header">
+			        <img src="/images/admin_imgs/software-engineer.jpg" alt="" />
+			        <h3 class="job-title">Student</h3>
+	       		 </div>
+		        <div class="details">
+		          View All Student Details.
+		        </div>
+		        <div class="job-body">
+			        <span class="open-position">Total : ${total_students } </span>
+			        
+		        </div>
+		        <div class="job-end">
+		        	<a href="viewAllStudents" class="job-button">More details</a>
+		        </div>
+		        
+	      </div>
+      
     </div>
   </div>
 

@@ -15,11 +15,11 @@
 
   <!-- flatiocns -->
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-  <link rel="stylesheet" href="/css/admin_css/adminHome.css">
+  <link rel="stylesheet" href="/css/admin_css/viewAllStudent.css">
   <link rel="stylesheet" href="/css/admin_css/dropdown.css">
   <link rel="stylesheet" href="/css/home.css">
   <link rel="stylesheet" type="text/css" href="/css/admin_css/adminListingPage.css" />
-  <title>Admin Home</title>
+  <title>View All Student</title>
 </head>
 
 <body>
@@ -66,24 +66,30 @@
     <div class="course-heading">
       <img src="images/courses.png" alt="" width="70px" />
 
-      <h2>${total_courses} Courses </h2>      
+      <h2>${total_students} Students </h2> 
+      <span><input style="padding:2%;margin-left:-10%; border-radius:5px;border-style: solid; border-color: green;" type="text" id="searchInput" placeholder="Search by name">     
+      </span>     
     </div>
 
 
     <div class="jobs">
-    <c:forEach items="${course_list}"  var="course"> 
+    <c:forEach items="${student_list}"  var="student"> 
 	      <div class="job">
 		        <div class="job-header">
 			        <img src="/images/admin_imgs/software-engineer.jpg" alt="" />
-			        <h3 class="job-title">${course.title }</h3>
+			        <h3 class="job-title">${student.fullname }</h3>
 	       		 </div>
 		        <div class="details">
-		          ${course.description }
+		          Department : ${student.department }
+		        </div>
+		        <div class="details">
+		          Email : ${student.email }
 		        </div>
 		        <div class="job-body">
-			        <span class="open-position">Code : ${course.course_code}</span>
-			        <span class="open-position">Credits : ${course.credits}</span>
-			        <span class="open-position">Dept : ${course.department}</span>
+			        <span class="open-position">Gender : ${student.gender}</span>
+			       
+			        <span class="open-position">Contact : ${student.contactno}</span>
+			        <span class="open-position">Cgpa : ${student.cgpa}</span>
 		        </div>
 		        <div class="job-end">
 		        	<a href="/admin/coursePage.html" class="job-button">More details</a>
@@ -99,6 +105,28 @@
   <!-- customejs link -->
 	<!-- <script type="text/javascript" src="/js/admin_js/adminMain.js"></script>  -->
   <script type="text/javascript" src="/js/home.js"></script>
+  <script>
+  
+	  document.addEventListener('DOMContentLoaded', function() {
+	      const searchInput = document.getElementById('searchInput');
+	      const studentItems = document.querySelectorAll('.job');
+	
+	      searchInput.addEventListener('input', function() {
+	          const searchText = searchInput.value.toLowerCase();
+	
+	          studentItems.forEach(function(student) {
+	              const studentName = student.querySelector('.job-title').textContent.toLowerCase();
+	
+	              if (studentName.includes(searchText)) {
+	                  student.style.display = 'block'; // Show matching students
+	              } else {
+	                  student.style.display = 'none'; // Hide non-matching students
+	              }
+	          });
+	      });
+  		});
+  </script>
+	
 </body>
 
 </html>

@@ -49,4 +49,16 @@ public class AdminServiceImpl implements AdminService
 		return "Student Added Successfully";
 	}
 
+	@Override
+	public List<Faculty> viewAllFaculty() {
+		
+		return facultyRepository.findAll();
+	}
+
+	@Override
+	public List<Student> viewAllStudents() {
+		
+		return studentRepository.findAll();
+	}
+
 }

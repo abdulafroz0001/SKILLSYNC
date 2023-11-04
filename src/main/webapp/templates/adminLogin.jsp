@@ -62,7 +62,7 @@
           <label for="loginPassword">Password</label>
         </div>
         <!-- input field -->
-        <button type="submit" value="Login" class="submit-btn"><a href="adminHome">Login</a></button>
+        <button type="submit" value="Login" class="submit-btn"><a href="adminDashboard">Login</a></button>
         <a href="#forgot-pw" class="forgot-pw">Forgot Password?</a>
       </div>
 

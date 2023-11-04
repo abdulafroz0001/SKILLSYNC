@@ -12,5 +12,7 @@ public interface AdminService
 	public String addCourse(Course c);
 	public String addStudent(Student st);
 	public List<Course> viewAllCourses();
+	public List<Faculty> viewAllFaculty();
+	public List<Student> viewAllStudents();
 
 }
