@@ -59,7 +59,7 @@
     	
       <form class="form" action="#" method="" >
         <img src="/images/login_avatar.jpg" alt="">
-        <h2>Student Profile</h2>
+        <h2>Faculty Profile</h2>
         <div class="loin-inputs">
 	        <div class="input-group">
 	          <input type="text" name="fullname" value="${faculty.fullname}" id="fullname" required="required" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');">
@@ -77,7 +77,7 @@
 	        
 	        <div class="input-group">
 	            <input class="no-placeholder" style="width:200px;" value="${faculty.dateofbirth }" type="date" name="dob" id="dob" required="required">
-  				<label hidden="true" id="dob-label" for="dob">Date Of Birth</label>
+  				<label  id="dob-label" for="dob">Date Of Birth</label>
 	        </div>
 	        <div class="input-group">
 	          <input type="text" value="${faculty.department }" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');" name="dept" id="dept" required="required"> 
@@ -94,12 +94,12 @@
 	          <label for="salary">Salary</label>
 	        </div>
 	        <div class="input-group">
-	          <input type="email" value="${faculty.email }" name="email" id="email" required="required">
+	          <input type="email" value="${faculty.email }" name="email" id="email" required="required" >
 	          <label for="email">Email</label>
 	          <span class="validation-message"></span>
 	        </div>
 	        <div class="input-group">
-	          <input type="text" value="${student.contactno}"  name="contactno" id="contactno" required="required">
+	          <input type="text" value="${faculty.contactno}"  name="contactno" id="contactno" required="required">
 	          <label for="contactno">Contact No</label>
 	          <span class="validation-message"></span>
 	        </div>
@@ -130,8 +130,6 @@
     </div>
   </div>
   <!-- customejs link -->
-  <script type="text/javascript" src="/js/admin_js/facultyRegistrationValidation.js"></script>
-  <script type="text/javascript" src="/js/admin_js/lable.js"></script>
   <script type="text/javascript" src="/js/home.js"></script>
 </body>
 
