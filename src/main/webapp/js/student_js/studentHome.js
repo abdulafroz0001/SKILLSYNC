@@ -79,7 +79,7 @@ const jobs = [
         details.classList.add("details");
         let detailsBtn = document.createElement("a");
         detailsBtn.href = job.link;
-        detailsBtn.innerHTML = "Edit";
+        detailsBtn.innerHTML = "View";
         detailsBtn.classList.add("details-btn");
         let openPositions = document.createElement("span");
         openPositions.classList.add("open-positions");

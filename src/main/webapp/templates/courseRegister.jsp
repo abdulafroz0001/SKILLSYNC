@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -116,5 +117,3 @@
   <!-- customejs link -->
   <script type="text/javascript" src="/js/home.js"></script>
 </body>
-
-</html>

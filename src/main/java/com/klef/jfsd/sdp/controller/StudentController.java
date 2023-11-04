@@ -32,7 +32,15 @@ public class StudentController
 	{
 		return "studentLogin";
 	}
-	
+	@GetMapping("studentProfile")
+	public ModelAndView studentProfile(HttpServletRequest request)
+	{
+		ModelAndView mv=new ModelAndView("studentprofile");
+		HttpSession session=request.getSession();
+		Student s = (Student) session.getAttribute("curStu");
+		mv.addObject("student",s);
+		return mv;
+	}
 	@GetMapping("studentHome")
 	public ModelAndView studentHome(HttpServletRequest request)
 	{

@@ -250,7 +250,7 @@ public class AdminController
 			c.setCredits(credits);
 			c.setDepartment(department);
 			msg=adminService.addCourse(c);
-			mv.setViewName("adminHome");
+			mv.setViewName("redirect:/admin/adminHome");
 			mv.addObject("message", msg);
 		}
 		catch(Exception e)
