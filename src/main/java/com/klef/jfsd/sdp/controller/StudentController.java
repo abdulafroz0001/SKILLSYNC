@@ -35,7 +35,7 @@ public class StudentController
 	@GetMapping("studentProfile")
 	public ModelAndView studentProfile(HttpServletRequest request)
 	{
-		ModelAndView mv=new ModelAndView("studentprofile");
+		ModelAndView mv=new ModelAndView("studentProfile");
 		HttpSession session=request.getSession();
 		Student s = (Student) session.getAttribute("curStu");
 		mv.addObject("student",s);
