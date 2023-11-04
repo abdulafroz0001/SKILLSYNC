@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.klef.jfsd.sdp.model.Course;
 import com.klef.jfsd.sdp.model.Faculty;
+import com.klef.jfsd.sdp.model.Student;
 import com.klef.jfsd.sdp.service.CFSService;
 import com.klef.jfsd.sdp.service.FacultyService;
 
@@ -35,7 +36,15 @@ public class FacultyController
 		
 		return "facultyLogin";
 	}
-	
+	@GetMapping("facultyProfile")
+	public ModelAndView facultyProfile(HttpServletRequest request)
+	{
+		ModelAndView mv=new ModelAndView("facultyProfile");
+		HttpSession session=request.getSession();
+		Faculty f = (Faculty) session.getAttribute("curFac");
+		mv.addObject("faculty",f);
+		return mv;
+	}
 	@GetMapping("facultyHome")
 	public ModelAndView facultyHome(HttpServletRequest request)
 	{
