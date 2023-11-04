@@ -35,6 +35,10 @@ public class Student
 	private String username;
 	@Column(name="stu_password", nullable = false)
 	private String password;
+	@Column(name="stu_secQuestion", nullable = false)
+	private String securityQuestion;
+	@Column(name="stu_secAnswer", nullable = false)
+	private String secAnswer;
 	public int getId() {
 		return id;
 	}
@@ -100,6 +104,18 @@ public class Student
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getSecurityQuestion() {
+		return securityQuestion;
+	}
+	public void setSecurityQuestion(String securityQuestion) {
+		this.securityQuestion = securityQuestion;
+	}
+	public String getSecAnswer() {
+		return secAnswer;
+	}
+	public void setSecAnswer(String secAnswer) {
+		this.secAnswer = secAnswer;
 	}
 
 }

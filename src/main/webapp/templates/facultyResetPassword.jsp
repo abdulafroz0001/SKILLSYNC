@@ -38,9 +38,8 @@
     </a>
 
     <ul class="navbar">
-        <li><a href="adminHome">Admin Dashboard</a></li>
-      <li><a href="facultyRegister">Add Faculty</a></li>
-      <li><a href="studentRegister">Add Student</a></li>
+       <li><a href="/">Home</a></li>
+      <li><a href="facultyHome">Faculty Dashboard</a></li>
     </ul>
     <div class="header-icons">
         <a href="/login.html"><i class="fi fi-rr-sign-in-alt"></i></a>
@@ -62,29 +61,20 @@
     </div> -->
     <div class="login-wrapper">
     	
-      <form class="form" action="updatePassword" method="post" >
+      <form class="form" action="resetPassword" method="post" >
         <img src="/images/login_avatar.jpg" alt="">
-        <h2>Forgot Password</h2>
+        <h2>Reset Password</h2>
         <div class="loin-inputs">
 	        
 	        
 	       
 	        <div class="input-group">
-	          <input type="text" name="username" id="username" required="required">
-	          <label for="username">Username</label>
-	          <span class="validation-message"></span>
+	          <input type="password" name="newpassword" id="newpassword" required="required">
+	          <label for="newpassword">New Password</label>
 	        </div>
 	        <div class="input-group">
-	            <select style="width:80%; padding:2%;outline: none;background-color: transparent; color:white;"  id="securityQuestion1" name="secQuestion" required>
-	                <option style=" color:black;width:80%; padding:2%;outline: none;background-color: transparent;color: black;" value="">Select a security question</option>
-	                <option style="width:80%; padding:2%;outline: none;background-color: transparent;color: inherit;color: black;" value="What is your favorite color?">What is your favorite color?</option>
-	                <option style="width:80%; padding:2%;outline: none;background-color: transparent;color: inherit;color: black;" value="What is your mother's maiden name?">What is your mother's maiden name?</option>
-	                <option style="width:80%; padding:2%;outline: none;background-color: transparent;color: inherit;color: black;" value="In what city were you born?">In what city were you born?</option>
-	            </select>
-	        </div>
-	        <div class="input-group">
-	          <input type="password" name="secAnswer" id="secAnswer" required="required">
-	          <label for="secAnswer">Answer</label>
+	          <input type="password" name="con_password" id="con_password" required="required">
+	          <label for="con_password">Confirm Password</label>
 	        </div>
         </div>
         <!-- input field -->

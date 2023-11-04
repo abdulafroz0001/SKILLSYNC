@@ -38,9 +38,11 @@
     </a>
 
     <ul class="navbar">
-        <li><a href="adminHome">Admin Dashboard</a></li>
+       <li><a href="/">Home</a></li>
+      <li><a href="adminHome">Admin Dashboard</a></li>
       <li><a href="facultyRegister">Add Faculty</a></li>
       <li><a href="studentRegister">Add Student</a></li>
+      <li><a href="courseRegister">Add Course</a></li>
     </ul>
     <div class="header-icons">
         <a href="/login.html"><i class="fi fi-rr-sign-in-alt"></i></a>
@@ -67,7 +69,8 @@
         <h2>Faculty Registration</h2>
         <div class="loin-inputs">
 	        <div class="input-group">
-	          <input type="text" name="fullname" id="fullname" required="required">
+	          <input type="text" name="fullname" id="fullname" required="required" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');">
+
 	          <label for="fullname">Full Name</label>
 	          <div class="validation-message"></div>
 	        </div>
@@ -82,16 +85,16 @@
 
 	        
 	        <div class="input-group">
-	            <input class="no-placeholder" style="width:200px;" type="date" name="dob" id="dob" required="required">
+	            <input class="no-placeholder" style="width:200px;" type="date" name="dob" id="dob" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');"required="required">
   				<label hidden="true" id="dob-label" for="dob">Date Of Birth</label>
 	        </div>
 	        <div class="input-group">
-	          <input type="text" name="dept" id="dept" required="required"> 
+	          <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');" name="dept" id="dept" required="required"> 
 	          <label for="dept">Department</label>
 	          <div class="validation-message"></div>
 	        </div>
 	        <div class="input-group">
-	          <input type="text" name="course" id="course" required="required">
+	          <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');" name="course" id="course" required="required">
 	          <label for="course">Course</label>
 	          <span class="validation-message"></span>
 	        </div>
@@ -100,7 +103,7 @@
 	          <label for="salary">Salary</label>
 	        </div>
 	        <div class="input-group">
-	          <input type="email" name="email" id="email" required="required">
+	          <input type="email"  name="email" id="email" required="required">
 	          <label for="email">Email</label>
 	          <span class="validation-message"></span>
 	        </div>

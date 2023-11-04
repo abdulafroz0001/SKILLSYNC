@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.klef.jfsd.sdp.model.Course;
 import com.klef.jfsd.sdp.model.Faculty;
+import com.klef.jfsd.sdp.model.Student;
 import com.klef.jfsd.sdp.repository.CourseRepository;
 import com.klef.jfsd.sdp.repository.FacultyRepository;
+import com.klef.jfsd.sdp.repository.StudentRepository;
 
 @Service
 public class AdminServiceImpl implements AdminService 
@@ -19,6 +21,9 @@ public class AdminServiceImpl implements AdminService
 	
 	@Autowired
 	CourseRepository courseRepository;
+	
+	@Autowired
+	StudentRepository studentRepository;
 
 	@Override
 	public String addFaculty(Faculty f) {
@@ -36,6 +41,12 @@ public class AdminServiceImpl implements AdminService
 	public List<Course> viewAllCourses() {
 		
 		return courseRepository.findAll();
+	}
+
+	@Override
+	public String addStudent(Student st) {
+		studentRepository.save(st);
+		return "Student Added Successfully";
 	}
 
 }

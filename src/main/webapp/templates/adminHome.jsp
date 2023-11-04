@@ -16,6 +16,7 @@
   <!-- flatiocns -->
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
   <link rel="stylesheet" href="/css/admin_css/adminHome.css">
+  <link rel="stylesheet" href="/css/admin_css/dropdown.css">
   <link rel="stylesheet" href="/css/home.css">
   <link rel="stylesheet" type="text/css" href="/css/admin_css/adminListingPage.css" />
   <title>Admin Home</title>
@@ -23,20 +24,30 @@
 
 <body>
   <!-- header -->
-
-  <div class="header">
-    <a href="/" class="logo">
-      <img src="/images/logo3.png" width="240px">
+ <div class="header">
+    <a href="/index.html" class="logo">
+        <img src="/images/logo3.png" width="240px" >
     </a>
-    
-    
 
     <ul class="navbar">
+       <li><a href="/">Home</a></li>
       <li><a href="adminHome">Admin Dashboard</a></li>
       <li><a href="facultyRegister">Add Faculty</a></li>
       <li><a href="studentRegister">Add Student</a></li>
       <li><a href="courseRegister">Add Course</a></li>
     </ul>
+    
+    
+    <div class="dropdown">
+	  <button class="dropbtn">Mappings Operations</button>
+	  <div class="dropdown-content">
+	  <a href="cfsRegister">Course-Faculty</a>
+	  <a href="cfsStudentRegister">Course-Student</a>
+   </div>
+   
+   
+</div>
+    
     <div class="header-icons">
       <a href="/login.html"><img src="/images/admin_imgs/admin_profile.png" width="65px"></a>
 
@@ -64,7 +75,7 @@
 	      <div class="job">
 		        <div class="job-header">
 			        <img src="/images/admin_imgs/software-engineer.jpg" alt="" />
-			        <h3 class="job-title">${course.name }</h3>
+			        <h3 class="job-title">${course.title }</h3>
 	       		 </div>
 		        <div class="details">
 		          ${course.description }

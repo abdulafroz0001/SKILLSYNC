@@ -19,7 +19,7 @@
 
     <!-- flatiocns -->
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-  <title>Login </title>
+  <title>Student Login </title>
 </head>
 
 <body>
@@ -50,21 +50,21 @@
 
     </div>
     <div class="login-wrapper">
-      <div class="form">
+      <form class="form" action="checkStudentLogin" method="post">
         <img src="/images/login_avatar.jpg" alt="">
         <h2>Student Login</h2>
         <div class="input-group">
-          <input type="text" name="loginUser" id="loginUser">
+          <input type="text" name="username" id="loginUser">
           <label for="loginUser">User Name</label>
         </div>
         <div class="input-group">
-          <input type="password" name="loginPassword" id="loginPassword">
+          <input type="password" name="password" id="loginPassword">
           <label for="loginPassword">Password</label>
         </div>
         <!-- input field -->
-        <button type="submit" value="Login" class="submit-btn"><a href="studentHome">Login</a></button>
-        <a href="#forgot-pw" class="forgot-pw">Forgot Password?</a>
-      </div>
+        <button type="submit" value="Login" class="submit-btn">Login</button>
+        <a href="facultyForgotPassword" class="forgot-pw">Forgot Password?</a>
+      </form>
 
       <!-- <div id="forgot-pw">
         <form action="" class="form">
