@@ -34,6 +34,7 @@
     <ul class="navbar">
       <li><a href="/">Home</a></li>
       <li><a href="facultyHome">Faculty Dashboard</a></li>
+      <li><a href="facultyProfile">Faculty Profile</a></li>
       <!-- <li><a href="/admin/coursePage.htmlabout">About Us</a></li>
       <li><a href="/admin/coursePage.htmlcontact">Contact</a></li> -->
     </ul>
