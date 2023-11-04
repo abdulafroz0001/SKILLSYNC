@@ -85,7 +85,7 @@
 
 	        
 	        <div class="input-group">
-	            <input class="no-placeholder" style="width:200px;" type="date" name="dob" id="dob" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');"required="required">
+	            <input class="no-placeholder" style="width:200px;" type="date" name="dob" id="dob"required="required">
   				<label hidden="true" id="dob-label" for="dob">Date Of Birth</label>
 	        </div>
 	        <div class="input-group">
