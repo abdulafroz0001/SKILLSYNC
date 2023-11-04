@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="/css/faculty_css/studentProfile.css">
+  <link rel="stylesheet" href="/css/faculty_css/facultyProfile.css">
   <link rel="stylesheet" href="/css/home.css">
 
   <!-- from home -->
@@ -85,7 +85,7 @@
 	          <div class="validation-message"></div>
 	        </div>
 	        <div class="input-group">
-	          <input type="number" value="${faculty.course }" name="course" id="course" required="required">
+	          <input type="text" value="${faculty.course }" name="course" id="course" required="required">
 	          <label for="course">Course</label>
 	          <span class="validation-message"></span>
 	        </div>

@@ -80,10 +80,36 @@ public class StudentController
 			if(s!=null)
 			{
 				s=studentService.studentLogin(username, password);
+				System.out.println("up");
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				
+				
+				System.out.println(s);
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println();
 				if(s!=null)
 				{
 					msg="Login Successfully ...";
 					mv.setViewName("redirect:/student/studentHome");
+					System.out.println("if");
+					System.out.println();
+					System.out.println();
+					System.out.println();
+					
+					
+					System.out.println(s);
+					System.out.println();
+					System.out.println();
+					System.out.println();
+					System.out.println();
+					System.out.println();
+					
+					
 					
 					HttpSession session = request.getSession();
 					session.setAttribute("curStu", s);

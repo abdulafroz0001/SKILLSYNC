@@ -21,7 +21,14 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
   <title>Student Profile </title>
 </head>
+<style>
+	
+	input
+	{
+		pointer-events:none;
+	}
 
+</style>
 <body>
   <!-- header -->
  <div class="header">
@@ -62,13 +69,13 @@
         <h2>Student Profile</h2>
         <div class="loin-inputs">
 	        <div class="input-group">
-	          <input type="text" name="fullname" value="${student.fullname}" id="fullname" required="required" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');">
+	          <input type="text" name="fullname" value="${student.fullname}"   id="fullname" required="required" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');">
 
 	          <label for="fullname">Full Name</label>
 	          <div class="validation-message"></div>
 	        </div>
 	        <div class="input-group">
-	        <input type="text" name="gender" value="${student.gender}" id="gender" required="required" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');">
+	        <input type="text" name="gender" value="${student.gender}"  id="gender" required="required" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');">
 
 	          <label for="gender">Gender</label>
 	          
@@ -76,35 +83,35 @@
 
 	        
 	        <div class="input-group">
-	            <input class="no-placeholder" style="width:200px;" value="${student.dateofbirth }" type="date" name="dob" id="dob" required="required">
-  				<label hidden="true" id="dob-label" for="dob">Date Of Birth</label>
+	            <input class="no-placeholder" style="width:200px;" value="${student.dateofbirth }"  type="date" name="dob" id="dob" required="required">
+  				<label  id="dob-label" for="dob">Date Of Birth</label>
 	        </div>
 	        <div class="input-group">
-	          <input type="text" value="${student.department }" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');" name="dept" id="dept" required="required"> 
+	          <input type="text" value="${student.department }"  oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');" name="dept" id="dept" required="required"> 
 	          <label for="dept">Department</label>
 	          <div class="validation-message"></div>
 	        </div>
 	        <div class="input-group">
-	          <input type="number" value="${student.current_year }" name="cur_year" id="cur_year" required="required">
+	          <input type="number" value="${student.current_year }"   name="cur_year" id="cur_year" required="required">
 	          <label for="cur_year">CurrentYear</label>
 	          <span class="validation-message"></span>
 	        </div>
 	        <div class="input-group">
-	          <input type="number" value="${student.cgpa}" step="0.01" name="cgpa" id="salary" required="required" >
+	          <input type="number" value="${student.cgpa}"  step="0.01" name="cgpa" id="salary" required="required" >
 	          <label for="salary">Cgpa</label>
 	        </div>
 	        <div class="input-group">
-	          <input type="email" value="${student.email }" name="email" id="email" required="required">
+	          <input type="email" value="${student.email }"  name="email" id="email" required="required">
 	          <label for="email">Email</label>
 	          <span class="validation-message"></span>
 	        </div>
 	        <div class="input-group">
-	          <input type="text" value="${student.contactno}"  name="contactno" id="contactno" required="required">
+	          <input type="text" value="${student.contactno}"   name="contactno" id="contactno" required="required">
 	          <label for="contactno">Contact No</label>
 	          <span class="validation-message"></span>
 	        </div>
 	        <div class="input-group">
-	          <input type="text" value="${student.username}" name="username" id="username" required="required">
+	          <input type="text" value="${student.username}"  name="username" id="username" required="required">
 	          <label for="username">Username</label>
 	          <span class="validation-message"></span>
 	        </div>
@@ -130,8 +137,6 @@
     </div>
   </div>
   <!-- customejs link -->
-  <script type="text/javascript" src="/js/admin_js/facultyRegistrationValidation.js"></script>
-  <script type="text/javascript" src="/js/admin_js/lable.js"></script>
   <script type="text/javascript" src="/js/home.js"></script>
 </body>
 

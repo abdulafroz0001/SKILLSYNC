@@ -11,6 +11,7 @@ import jakarta.persistence.Table;
 @Table(name = "student_table")
 public class Student 
 {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="stu_id")
@@ -116,6 +117,13 @@ public class Student
 	}
 	public void setSecAnswer(String secAnswer) {
 		this.secAnswer = secAnswer;
+	}
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", fullname=" + fullname + ", gender=" + gender + ", dateofbirth=" + dateofbirth
+				+ ", department=" + department + ", current_year=" + current_year + ", cgpa=" + cgpa + ", email="
+				+ email + ", contactno=" + contactno + ", username=" + username + ", password=" + password
+				+ ", securityQuestion=" + securityQuestion + ", secAnswer=" + secAnswer + "]";
 	}
 
 }
