@@ -77,7 +77,7 @@
 			        <span class="open-position">Dept : ${course.department}</span>
 		        </div>
 		        <div class="job-end">
-		        	<a href="/admin/coursePage.html" class="job-button">More details</a>
+		        	<a class="job-button" href='<c:url value="facultyCoursePage?id=${course.id}"></c:url>'>More details</a>
 		        </div>
 		        
 	      </div>

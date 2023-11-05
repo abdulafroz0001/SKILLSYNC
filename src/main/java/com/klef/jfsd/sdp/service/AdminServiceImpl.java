@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.klef.jfsd.sdp.model.Admin;
 import com.klef.jfsd.sdp.model.Course;
 import com.klef.jfsd.sdp.model.Faculty;
 import com.klef.jfsd.sdp.model.Student;
+import com.klef.jfsd.sdp.repository.AdminRepository;
 import com.klef.jfsd.sdp.repository.CourseRepository;
 import com.klef.jfsd.sdp.repository.FacultyRepository;
 import com.klef.jfsd.sdp.repository.StudentRepository;
@@ -24,6 +26,8 @@ public class AdminServiceImpl implements AdminService
 	
 	@Autowired
 	StudentRepository studentRepository;
+	@Autowired
+	AdminRepository adminRepository;
 
 	@Override
 	public String addFaculty(Faculty f) {
@@ -59,6 +63,18 @@ public class AdminServiceImpl implements AdminService
 	public List<Student> viewAllStudents() {
 		
 		return studentRepository.findAll();
+	}
+
+	@Override
+	public Admin adminLogin(String ausername, String apassword) {
+		
+		return adminRepository.adminLogin(ausername, apassword);
+	}
+
+	@Override
+	public Admin checkAdminUsername(String username) {
+		
+		return adminRepository.checkAdminUsername(username);
 	}
 
 }

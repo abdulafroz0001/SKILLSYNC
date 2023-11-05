@@ -42,6 +42,9 @@
     </div>
 </div>
 <!-- header -->
+<span>
+		<h3 align=center style="color:green">${message}</h3>
+	</span>
 
 
   <div class="total-login">
@@ -50,21 +53,21 @@
 
     </div>
     <div class="login-wrapper">
-      <div class="form">
+      <form class="form" action="checkAdminLogin" method="post">
         <img src="/images/login_avatar.jpg" alt="">
         <h2>Admin Login</h2>
         <div class="input-group">
-          <input type="text" name="loginUser" id="loginUser">
+          <input type="text" name="username" id="loginUser">
           <label for="loginUser">User Name</label>
         </div>
         <div class="input-group">
-          <input type="password" name="loginPassword" id="loginPassword">
+          <input type="password" name="password" id="loginPassword">
           <label for="loginPassword">Password</label>
         </div>
         <!-- input field -->
         <button type="submit" value="Login" class="submit-btn"><a href="adminDashboard">Login</a></button>
         <a href="#forgot-pw" class="forgot-pw">Forgot Password?</a>
-      </div>
+      </form>
 
       <!-- <div id="forgot-pw">
         <form action="" class="form">

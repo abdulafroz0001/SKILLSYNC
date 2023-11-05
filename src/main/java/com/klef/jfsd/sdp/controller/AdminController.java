@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.klef.jfsd.sdp.model.Admin;
 import com.klef.jfsd.sdp.model.CFS_Student;
 import com.klef.jfsd.sdp.model.Course;
 import com.klef.jfsd.sdp.model.CourseFacultySection;
@@ -25,6 +26,8 @@ import com.klef.jfsd.sdp.service.SectionService;
 import com.klef.jfsd.sdp.service.StudentService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("admin")
@@ -60,20 +63,96 @@ public class AdminController
 		return "adminLogin";
 	}
 	
-	@GetMapping("adminDashboard")
-	public ModelAndView adminDashboard()
+	public boolean loginStatus(Object user)
+	{
+		return !(user==null);
+	}
+	
+	@GetMapping("logout")
+	public String adminLogout(HttpServletRequest request)
+	{
+		HttpSession session =  request.getSession();
+		session.removeAttribute("curAd");
+		
+		return "logout";
+	}
+	
+	@PostMapping("checkAdminLogin")
+	public ModelAndView checkAdminLogin(HttpServletRequest request)
 	{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("adminDashboard");
-		List<Course> courseList = adminService.viewAllCourses();
-		List<Faculty> facultyList = adminService.viewAllFaculty();
-		List<Student> studentList = adminService.viewAllStudents();
-		System.out.println(courseList);
-
-		mv.addObject("total_courses", courseList.size());
-		mv.addObject("total_faculty", facultyList.size());
-		mv.addObject("total_students", studentList.size());
+		
+		String msg=null;
+		
+		try {
+			
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			Admin a=null;
+			a = adminService.checkAdminUsername(username);
+			System.out.println(a);
+			if(a!=null)
+			{
+				a=adminService.adminLogin(username, password);
+				System.out.println(a);
+				if(a!=null)
+				{
+					msg="Login Successfully ...";
+					mv.setViewName("redirect:/admin/adminDashboard");
+					
+					HttpSession session = request.getSession();
+					session.setAttribute("curAd", a);
+					return mv;
+				}
+				else
+				{
+					msg= "Login Failed ... Wrong Password... Try Again ";
+					mv.setViewName("adminLogin");
+					mv.addObject("message", msg);
+				}
+			}
+			else
+			{
+				msg="Invalid Credentials";
+				mv.setViewName("adminLogin");
+				mv.addObject("message", msg);
+				
+			}
+			
+			
+		} catch (Exception e) 
+		{
+			msg= e.getMessage();
+			mv.setViewName("adminLogin");
+			mv.addObject("message", msg);
+			
+		}
 		return mv;
+	}
+	
+	@GetMapping("adminDashboard")
+	public ModelAndView adminDashboard(HttpServletRequest request,HttpServletResponse response)
+	{
+		 
+		if(loginStatus(request.getSession().getAttribute("curAd")))
+		{
+			response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		    response.setHeader("Pragma", "no-cache");
+		    response.setHeader("Expires", "0");
+			
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("adminDashboard");
+			List<Course> courseList = adminService.viewAllCourses();
+			List<Faculty> facultyList = adminService.viewAllFaculty();
+			List<Student> studentList = adminService.viewAllStudents();
+			System.out.println(courseList);
+			
+			mv.addObject("total_courses", courseList.size());
+			mv.addObject("total_faculty", facultyList.size());
+			mv.addObject("total_students", studentList.size());
+			return mv;
+		}
+		return new ModelAndView("redirect:/admin/adminLogin");
 		
 	}
 	@GetMapping("viewAllCourses")

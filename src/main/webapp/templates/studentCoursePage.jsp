@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+     <%@ taglib uri="jakarta.tags.core" prefix="c"%> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +52,7 @@
         <div class="course-heading">
             <img src="/images/student_imgs/java.png" alt="" width="70px" />
 
-            <h2>Java Full Stack and Microservices </h2>
+            <h2 style="color:black; font-weight:600;">${course.title} </h2>
         </div>
 
 
@@ -107,18 +108,21 @@
 
             <div class="tab-content-container">
                 <div class="tab-content active">
-                    <h2>CO-1</h2>
-
-                    <div class="content-list">
-                        <img src="/images/student_imgs/pdf.png" alt="" width="50px" />
-                        <div class="list-name">
-                            <p>Java Full Stack and Microservices </p>
-                            <span>Introduction to JDBC</span>
-                        </div>
-
-                        
-
-                    </div>
+                     <h2>CO-1</h2>
+					
+					<c:forEach items="${materials}"  var="material"> 
+	                    <div class="content-list">
+	                        <img src="/images/faculty_imgs/pdf.png" alt="" width="50px" />
+	                        <div class="list-name">
+	                            
+	                            <a href='<c:url value="downloadMaterial?filename=${material.name}"></c:url>'>${material.name}</a>
+	                            <span>${material.description }</span>
+	                        </div>
+						
+	                        
+	
+	                    </div>
+                    </c:forEach>
                     <div class="content-list">
                         <img src="/images/student_imgs/pdf.png" alt="" width="50px" />
                         <div class="list-name">

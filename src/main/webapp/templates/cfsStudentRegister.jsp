@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="/css/admin_css/cfsRegister.css">
+   <link rel="stylesheet" href="/css/admin_css/dropdown.css">
   <link rel="stylesheet" href="/css/home.css">
 
   <!-- from home -->
@@ -45,10 +46,20 @@
       <li><a href="studentRegister">Add Student</a></li>
       <li><a href="courseRegister">Add Course</a></li>
     </ul>
-    <div class="header-icons">
-        <a href="/login.html"><i class="fi fi-rr-sign-in-alt"></i></a>
-        
-        <div class="bx bx-menu" id="menu-icon"></div>
+   
+    <div class="dropdown">
+	  <button class="dropbtn">Mappings Operations</button>
+	  <div class="dropdown-content">
+	  <a href="cfsRegister">Course-Faculty</a>
+	  <a href="cfsStudentRegister">Course-Student</a>
+   </div>
+</div>
+   
+    <div style="padding:0.7%;background-color:#4CAF50;border-radius:10px;border:none; margin-right:2%;color:white;">
+    	<a href="#"><span style="color:white">Logout</span></a>
+      
+
+      <div class="bx bx-menu" id="menu-icon"></div>
 
     </div>
 </div>

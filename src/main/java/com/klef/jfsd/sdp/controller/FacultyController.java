@@ -5,18 +5,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.klef.jfsd.sdp.model.Course;
 import com.klef.jfsd.sdp.model.Faculty;
-import com.klef.jfsd.sdp.model.Student;
+import com.klef.jfsd.sdp.model.MaterialFile;
 import com.klef.jfsd.sdp.service.CFSService;
+import com.klef.jfsd.sdp.service.CourseService;
 import com.klef.jfsd.sdp.service.FacultyService;
+import com.klef.jfsd.sdp.service.MaterialFileService;
 
-import ch.qos.logback.core.model.Model;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
@@ -30,6 +36,13 @@ public class FacultyController
 	@Autowired
 	CFSService cfsService;
 	
+	@Autowired
+	CourseService courseService;
+	
+	@Autowired
+	 MaterialFileService materialFileService;
+
+	
 	@GetMapping("facultyLogin")
 	public String facultyLogin()
 	{
@@ -41,7 +54,7 @@ public class FacultyController
 	{
 		ModelAndView mv=new ModelAndView("facultyProfile");
 		HttpSession session=request.getSession();
-		Faculty f = (Faculty) session.getAttribute("curFac");
+		Faculty f =  (Faculty) session.getAttribute("curFac");
 		mv.addObject("faculty",f);
 		return mv;
 	}
@@ -62,10 +75,47 @@ public class FacultyController
 	}
 	
 	@GetMapping("facultyCoursePage")
-	public String facultyCoursePage()
+	public ModelAndView facultyCoursePage(@RequestParam("id") int cid)
 	{
+		Course c = courseService.viewCourseById(cid);
+		List<MaterialFile> materials =materialFileService.viewFilesByCourseId(cid);
+		ModelAndView mv = new ModelAndView("facultyCoursePage");
+		mv.addObject("course", c);
+		mv.addObject("materials", materials);
+		return mv;
+	}
+	@GetMapping("uploadMaterial")
+	public ModelAndView uploadMaterial(@RequestParam("id") int cid)
+	{
+		Course c = courseService.viewCourseById(cid);
+		ModelAndView mv = new ModelAndView("uploadMaterial");
+		mv.addObject("course", c);
+		return mv;
+	}
+	
+	@PostMapping("insertMaterialFile")
+	public ModelAndView insertMaterialFile(HttpServletRequest request)
+	{
+		String name= request.getParameter("name");
 		
-		return "facultyCoursePage";
+		MultipartFile file = new StandardServletMultipartResolver().resolveMultipart(request).getFile("file");
+			
+		String desc= request.getParameter("description");
+		int course_id = Integer.parseInt(request.getParameter("course_id"));
+		
+		ModelAndView mv = new ModelAndView("facultyHome");
+		HttpSession session = request.getSession();
+		Faculty f = (Faculty) session.getAttribute("curFac");
+		
+		List<Course> courseList= cfsService.viewCourseByFacultyId(f.getId()) ;
+		
+		System.out.println("courseList -- -- -- - --- "+ courseList);
+		mv.addObject("course_list", courseList);
+		mv.addObject("total_courses", courseList.size());
+		
+		materialFileService.uploadToFileSystem(name, desc, file, course_id);
+		return mv;		
+		
 	}
 	
 	

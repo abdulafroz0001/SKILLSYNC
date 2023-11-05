@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
   <!-- from home -->
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -48,8 +49,9 @@
    
 </div>
     
-    <div class="header-icons">
-      <a href="/login.html"><img src="/images/admin_imgs/admin_profile.png" width="65px"></a>
+    <div style="padding:0.7%;background-color:#4CAF50;border-radius:10px;border:none; margin-right:2%;color:white;">
+    	<a href="logout"><span style="color:white">Logout</span></a>
+      
 
       <div class="bx bx-menu" id="menu-icon"></div>
 
@@ -132,6 +134,7 @@
   <!-- customejs link -->
 	<!-- <script type="text/javascript" src="/js/admin_js/adminMain.js"></script>  -->
   <script type="text/javascript" src="/js/home.js"></script>
+
 </body>
 
 </html>

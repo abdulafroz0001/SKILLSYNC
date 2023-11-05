@@ -82,14 +82,7 @@
 	        </div>
 
 	        
-	        <div class="input-group">
-<<<<<<< HEAD
-	            <input class="no-placeholder" style="width:200px;" type="date" name="dob" id="dob" required="required">
-=======
-	            <input class="no-placeholder" style="width:200px;" type="date" name="dob" id="dob"required="required">
->>>>>>> c7c8de63dafb9e05fc1bdda240b34ab033d2e365
-  				<label hidden="true" id="dob-label" for="dob">Date Of Birth</label>
-	        </div>
+	        
 	        <div class="input-group">
 	          <input type="text" oninput="this.value = this.value.replace(/[^A-Za-z ]/g, '');" name="dept" id="dept" required="required"> 
 	          <label for="dept">Department</label>

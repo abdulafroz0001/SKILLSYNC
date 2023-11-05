@@ -7,8 +7,7 @@ import com.klef.jfsd.sdp.model.Course;
 public interface CourseService 
 {
 	public String addCourse(Course c);
-	public Course viewCourseById(int cid);
 	public List<Course>viewAllCourse();
+	public Course viewCourseById(int cid);
 	
-
 }

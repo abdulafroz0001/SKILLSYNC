@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" isELIgnored="false"%>
+    <%@ taglib uri="jakarta.tags.core" prefix="c"%> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +16,7 @@
 
     <!-- flatiocns -->
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-    <link rel="stylesheet" href="css/facultyHome.css">
+    <link rel="stylesheet" href="/css/faculty_css/facultyHome.css">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" type="text/css" href="/css/faculty_css/facultyCoursePage.css" />
     <link rel="stylesheet" type="text/css" href="/css/faculty_css/facultyCourse.css" />
@@ -51,8 +52,11 @@
         <div class="course-heading">
             <img src="images/java.png" alt="" width="70px" />
 
-            <h2>Java Full Stack and Microservices </h2>
+            <h2 style="color:black; font-weight:600;">${course.title} </h2>
+            <a class="uploadslinks" href='<c:url value="uploadMaterial?id=${course.id}"></c:url>'><span >Upload Material</span></a>
         </div>
+
+      		
 
 
         <div class="tabs-container">
@@ -108,17 +112,25 @@
             <div class="tab-content-container">
                 <div class="tab-content active">
                     <h2>CO-1</h2>
-
-                    <div class="content-list">
-                        <img src="/images/faculty_imgs/pdf.png" alt="" width="50px" />
-                        <div class="list-name">
-                            <p>Java Full Stack and Microservices </p>
-                            <span>Introduction to JDBC</span>
-                        </div>
-
-                        
-
-                    </div>
+					
+					<c:forEach items="${materials}"  var="material"> 
+	                    <div class="content-list">
+	                        <img src="/images/faculty_imgs/pdf.png" alt="" width="50px" />
+	                        <div class="list-name">
+	                            
+	                            <a href='<c:url value="downloadMaterial?filename=${material.name}"></c:url>'>${material.name}</a>
+	                            <span>${material.description }</span>
+	                        </div>
+						
+	                        
+	
+	                    </div>
+                    </c:forEach>
+                    
+                    
+       
+      
+                    
                     <div class="content-list">
                         <img src="/images/faculty_imgs/pdf.png" alt="" width="50px" />
                         <div class="list-name">

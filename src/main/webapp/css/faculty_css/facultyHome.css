@@ -72,3 +72,16 @@ h1
     color: #2e937a;
     border: 1px solid #2e937a;
 }
+
+
+.uploadslinks
+{
+	margin-left: 5%;
+	background-color: #2e937a;
+	padding: 0.6%;
+	border: none;
+	border-radius: 10px;
+	
+	color: white;
+}
+

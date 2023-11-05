@@ -86,7 +86,7 @@
 			        <span class="open-position">Dept : ${course.department}</span>
 		        </div>
 		        <div class="job-end">
-		        	<a href="/admin/coursePage.html" class="job-button">More details</a>
+		        	<a href="adminCoursePage" class="job-button">More details</a>
 		        </div>
 		        
 	      </div>

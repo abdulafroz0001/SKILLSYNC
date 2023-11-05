@@ -7,12 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.klef.jfsd.sdp.model.Course;
-import com.klef.jfsd.sdp.model.Faculty;
+import com.klef.jfsd.sdp.model.MaterialFile;
 import com.klef.jfsd.sdp.model.Student;
 import com.klef.jfsd.sdp.service.CFS_StudentService;
+import com.klef.jfsd.sdp.service.CourseService;
+import com.klef.jfsd.sdp.service.MaterialFileService;
 import com.klef.jfsd.sdp.service.StudentService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,6 +30,13 @@ public class StudentController
 	
 	@Autowired
 	CFS_StudentService cfs_StudentService;
+	
+	@Autowired
+	 MaterialFileService materialFileService;
+	
+	@Autowired
+	CourseService courseService;
+	
 	@GetMapping("studentLogin")
 	public String studentLogin()
 	{
@@ -58,9 +68,14 @@ public class StudentController
 	}
 	
 	@GetMapping("studentCoursePage")
-	public String studentCoursePage()
+	public ModelAndView studentCoursePage(@RequestParam("id") int cid)
 	{
-		return "studentCoursePage";
+		Course c = courseService.viewCourseById(cid);
+		List<MaterialFile> materials =materialFileService.viewFilesByCourseId(cid);
+		ModelAndView mv = new ModelAndView("studentCoursePage");
+		mv.addObject("course", c);
+		mv.addObject("materials", materials);
+		return mv;
 	}
 	
 	
